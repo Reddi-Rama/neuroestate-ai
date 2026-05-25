@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NeuroEstate AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:'Outfit',sans-serif;
+        }
+
+        body{
+
+            min-height:100vh;
+
+            overflow-x:hidden;
+
+            background:
+            radial-gradient(circle at top left,#2563eb 0%,transparent 30%),
+            radial-gradient(circle at bottom right,#7c3aed 0%,transparent 30%),
+            #020617;
+
+            padding:40px;
+        }
+
+        .container{
+
+            width:100%;
+
+            max-width:1500px;
+
+            margin:auto;
+
+            min-height:90vh;
+
+            border-radius:35px;
+
+            overflow:hidden;
+
+            display:grid;
+
+            grid-template-columns:1.1fr 0.9fr;
+
+            background:rgba(255,255,255,0.05);
+
+            border:1px solid rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(30px);
+
+            box-shadow:
+            0 20px 80px rgba(0,0,0,0.5);
+        }
+
+        .left{
+
+            padding:70px;
+
+            background:
+            linear-gradient(
+                145deg,
+                rgba(37,99,235,0.15),
+                rgba(15,23,42,0.8)
+            );
+
+            color:white;
+        }
+
+        .logo{
+
+            width:90px;
+            height:90px;
+
+            border-radius:28px;
+
+            background:
+            linear-gradient(
+                135deg,
+                #60a5fa,
+                #7c3aed
+            );
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            font-size:38px;
+
+            font-weight:900;
+
+            margin-bottom:40px;
+
+            box-shadow:
+            0 15px 35px rgba(37,99,235,0.35);
+        }
+
+        .hero-title{
+
+            font-size:78px;
+
+            line-height:0.95;
+
+            font-weight:900;
+
+            letter-spacing:-4px;
+
+            text-transform:uppercase;
+
+            animation:floatText 4s ease-in-out infinite;
+
+            text-shadow:
+            0 1px 0 #ccc,
+            0 2px 0 #c9c9c9,
+            0 3px 0 #bbb,
+            0 4px 0 #b9b9b9,
+            0 5px 0 #aaa,
+            0 10px 20px rgba(0,0,0,0.4),
+            0 20px 40px rgba(0,0,0,0.35);
+        }
+
+        .gradient{
+
+            background:
+            linear-gradient(
+                90deg,
+                #60a5fa,
+                #7c3aed,
+                #c084fc
+            );
+
+            -webkit-background-clip:text;
+
+            -webkit-text-fill-color:transparent;
+        }
+
+        .description{
+
+            margin-top:35px;
+
+            max-width:650px;
+
+            font-size:18px;
+
+            line-height:1.9;
+
+            color:#cbd5e1;
+        }
+
+        .stats{
+
+            margin-top:50px;
+
+            display:flex;
+
+            gap:24px;
+
+            flex-wrap:wrap;
+        }
+
+        .card{
+
+            width:180px;
+
+            padding:28px;
+
+            border-radius:30px;
+
+            background:rgba(255,255,255,0.06);
+
+            border:1px solid rgba(255,255,255,0.08);
+
+            backdrop-filter:blur(20px);
+
+            transition:0.4s;
+        }
+
+        .card:hover{
+
+            transform:translateY(-8px);
+
+            background:rgba(255,255,255,0.09);
+
+            box-shadow:0 20px 40px rgba(0,0,0,0.25);
+        }
+
+        .card h2{
+
+            font-size:42px;
+
+            margin-bottom:10px;
+        }
+
+        .card span{
+
+            color:#cbd5e1;
+        }
+
+        .right{
+
+            padding:60px;
+
+            background:white;
+        }
+
+        .tag{
+
+            width:max-content;
+
+            padding:10px 18px;
+
+            border-radius:100px;
+
+            background:#dbeafe;
+
+            color:#2563eb;
+
+            font-size:14px;
+
+            font-weight:700;
+
+            margin-bottom:24px;
+        }
+
+        .form-title{
+
+            font-size:56px;
+
+            font-weight:900;
+
+            color:#020617;
+        }
+
+        .form-description{
+
+            margin-top:18px;
+
+            color:#64748b;
+
+            font-size:17px;
+
+            line-height:1.8;
+        }
+
+        .grid{
+
+            margin-top:40px;
+
+            display:grid;
+
+            grid-template-columns:1fr 1fr;
+
+            gap:24px;
+        }
+
+        .group{
+
+            display:flex;
+
+            flex-direction:column;
+        }
+
+        .group label{
+
+            margin-bottom:10px;
+
+            font-weight:700;
+
+            color:#0f172a;
+        }
+
+        .group input,
+        .group select{
+
+            height:68px;
+
+            border:none;
+
+            outline:none;
+
+            border-radius:22px;
+
+            background:#f1f5f9;
+
+            padding:0 22px;
+
+            font-size:16px;
+
+            border:2px solid transparent;
+
+            transition:0.3s;
+        }
+
+        .group input:focus,
+        .group select:focus{
+
+            border-color:#2563eb;
+
+            background:white;
+
+            box-shadow:
+            0 10px 30px rgba(37,99,235,0.15);
+        }
+
+        .predict-btn{
+
+            margin-top:35px;
+
+            width:100%;
+
+            height:74px;
+
+            border:none;
+
+            border-radius:24px;
+
+            background:
+            linear-gradient(
+                90deg,
+                #2563eb,
+                #7c3aed
+            );
+
+            color:white;
+
+            font-size:20px;
+
+            font-weight:800;
+
+            cursor:pointer;
+
+            transition:0.4s;
+        }
+
+        .predict-btn:hover{
+
+            transform:translateY(-5px);
+
+            box-shadow:
+            0 20px 40px rgba(37,99,235,0.35);
+        }
+
+        .result{
+
+            margin-top:35px;
+
+            padding:35px;
+
+            border-radius:30px;
+
+            background:
+            linear-gradient(
+                145deg,
+                #eff6ff,
+                #eef2ff
+            );
+
+            display:none;
+        }
+
+        .result h3{
+
+            color:#1e40af;
+
+            margin-bottom:15px;
+        }
+
+        .price{
+
+            font-size:58px;
+
+            font-weight:900;
+
+            background:
+            linear-gradient(
+                90deg,
+                #2563eb,
+                #7c3aed
+            );
+
+            -webkit-background-clip:text;
+
+            -webkit-text-fill-color:transparent;
+        }
+
+        @keyframes floatText{
+
+            0%{
+                transform:translateY(0px);
+            }
+
+            50%{
+                transform:translateY(-10px);
+            }
+
+            100%{
+                transform:translateY(0px);
+            }
+        }
+
+        @media(max-width:1200px){
+
+            .container{
+                grid-template-columns:1fr;
+            }
+
+            .left{
+                display:none;
+            }
+        }
+
+        @media(max-width:700px){
+
+            body{
+                padding:15px;
+            }
+
+            .right{
+                padding:30px;
+            }
+
+            .grid{
+                grid-template-columns:1fr;
+            }
+
+            .hero-title{
+                font-size:52px;
+            }
+
+            .form-title{
+                font-size:40px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="left">
+
+            <div class="logo">
+                N
+            </div>
+
+            <h1 class="hero-title">
+
+                The Future Of
+
+                <span class="gradient">
+                    Property Valuation
+                </span>
+
+                Starts Here
+
+            </h1>
+
+            <p class="description">
+
+                Transforming real estate intelligence with AI-driven
+                property valuation. Predict home prices faster, smarter,
+                and more accurately using next-generation machine learning technology.
+
+            </p>
+
+            <div class="stats">
+
+                <div class="card">
+
+                    <h2>98%</h2>
+
+                    <span>Prediction Accuracy</span>
+
+                </div>
+
+                <div class="card">
+
+                    <h2>24/7</h2>
+
+                    <span>AI Property Insights</span>
+
+                </div>
+
+                <div class="card">
+
+                    <h2>ML</h2>
+
+                    <span>Machine Learning Powered</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="right">
+
+            <div class="tag">
+                AI Powered Prediction
+            </div>
+
+            <h1 class="form-title">
+                Predict Property Price
+            </h1>
+
+            <p class="form-description">
+
+                Enter the property details below and let NeuroEstate AI
+                estimate the market value instantly.
+
+            </p>
+
+            <div class="grid">
+
+                <div class="group">
+
+                    <label>Square Feet</label>
+
+                    <input type="number"
+                        id="sqft"
+                        placeholder="Enter square feet">
+
+                </div>
+
+                <div class="group">
+
+                    <label>Bedrooms</label>
+
+                    <input type="number"
+                        id="bedrooms"
+                        placeholder="Enter bedrooms">
+
+                </div>
+
+                <div class="group">
+
+                    <label>Bathrooms</label>
+
+                    <input type="number"
+                        id="bathrooms"
+                        placeholder="Enter bathrooms">
+
+                </div>
+
+                <div class="group">
+
+                    <label>Brick House</label>
+
+                    <select id="brick">
+
+                        <option value="Yes">Yes</option>
+
+                        <option value="No">No</option>
+
+                    </select>
+
+                </div>
+
+                <div class="group">
+
+                    <label>Neighbourhood</label>
+
+                    <select id="neighbourhood">
+
+                        <option value="East">East</option>
+
+                        <option value="North">North</option>
+
+                        <option value="West">West</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <button class="predict-btn"
+                onclick="predictPrice()">
+
+                🚀 Predict Property Price
+
+            </button>
+
+            <div class="result"
+                id="result">
+
+                <h3>
+                    Estimated Market Value
+                </h3>
+
+                <div class="price"
+                    id="price"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        async function predictPrice(){
+
+            const bedrooms =
+                parseInt(document.getElementById("bedrooms").value)
+
+            const bathrooms =
+                parseInt(document.getElementById("bathrooms").value)
+
+            const totalRooms = bedrooms + bathrooms
+
+            const data = {
+
+                SqFt: parseInt(
+                    document.getElementById("sqft").value
+                ),
+
+                Bedrooms: bedrooms,
+
+                Bathrooms: bathrooms,
+
+                Brick: document.getElementById("brick").value,
+
+                Neighbourhood:
+                document.getElementById("neighbourhood").value,
+
+                TotalRooms: totalRooms
+            }
+
+            const response = await fetch("/predict",{
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body:JSON.stringify(data)
+            })
+
+            const result = await response.json()
+
+            document.getElementById("result").style.display="block"
+
+            document.getElementById("price").innerHTML =
+
+                "$ " +
+                result.Predicted_Price.toFixed(2)
+        }
+
+    </script>
+
+</body>
+
+</html>
