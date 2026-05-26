@@ -597,6 +597,21 @@
                 🚀 Predict Property Price
 
             </button>
+            {% if prediction %}
+<div style="
+    margin-top: 25px;
+    padding: 20px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    color: white;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+">
+    Predicted Price: ${{ prediction }}
+</div>
+{% endif %}
 
             <div class="result"
                 id="result">
