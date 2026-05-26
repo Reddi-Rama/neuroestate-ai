@@ -10,7 +10,7 @@ model_path = os.path.join("models", "house_price_model.pkl")
 model = joblib.load(model_path)
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('index.html')
 
