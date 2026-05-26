@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
     <title>NeuroEstate AI</title>
 
     <style>
@@ -15,181 +20,441 @@
         }
 
         body{
-            background: linear-gradient(135deg,#020024,#090979,#6a00ff);
+
+            background:
+            linear-gradient(
+                135deg,
+                #020024,
+                #090979,
+                #6a00ff
+            );
+
             min-height:100vh;
+
             display:flex;
+
             justify-content:center;
+
             align-items:center;
-            padding:40px;
+
+            padding:30px;
         }
 
         .container{
+
             width:100%;
-            max-width:1400px;
+
+            max-width:1500px;
+
             background:white;
-            border-radius:30px;
+
+            border-radius:35px;
+
             overflow:hidden;
+
             display:grid;
+
             grid-template-columns:1fr 1fr;
-            box-shadow:0 20px 60px rgba(0,0,0,0.3);
+
+            box-shadow:
+            0 25px 70px rgba(0,0,0,0.35);
         }
 
+        /* LEFT SIDE */
+
         .left{
-            background:linear-gradient(180deg,#000428,#004e92);
+
+            background:
+            linear-gradient(
+                180deg,
+                #000428,
+                #000d4f
+            );
+
             color:white;
+
             padding:60px;
+
             display:flex;
+
             flex-direction:column;
-            justify-content:center;
+
+            justify-content:flex-start;
+        }
+
+        .brand{
+
+            display:flex;
+
+            align-items:center;
+
+            gap:18px;
+
+            margin-bottom:70px;
         }
 
         .logo{
-            width:90px;
-            height:90px;
-            background:linear-gradient(135deg,#2563eb,#7c3aed);
-            border-radius:25px;
+
+            width:80px;
+
+            height:80px;
+
+            border-radius:24px;
+
+            background:
+            linear-gradient(
+                135deg,
+                #2563eb,
+                #7c3aed
+            );
+
             display:flex;
-            justify-content:center;
+
             align-items:center;
-            font-size:45px;
-            font-weight:bold;
-            margin-bottom:30px;
-        }
 
-        .left h1{
-            font-size:70px;
-            line-height:1;
-            margin-bottom:30px;
-        }
+            justify-content:center;
 
-        .left p{
-            font-size:22px;
-            line-height:1.7;
-            color:#d1d5db;
-        }
-
-        .right{
-            padding:60px;
-        }
-
-        .right h2{
             font-size:42px;
-            margin-bottom:15px;
-            color:#111827;
+
+            font-weight:bold;
+
+            color:white;
         }
 
-        .subtitle{
-            color:#6b7280;
-            margin-bottom:40px;
+        .brand-text h2{
+
+            font-size:42px;
+
+            margin-bottom:6px;
+        }
+
+        .brand-text p{
+
+            color:#94a3b8;
+
             font-size:18px;
         }
 
-        form{
+        .hero-text h1{
+
+            font-size:82px;
+
+            line-height:1;
+
+            font-weight:900;
+
+            margin-bottom:35px;
+        }
+
+        .hero-text span{
+
+            background:
+            linear-gradient(
+                90deg,
+                #3b82f6,
+                #a855f7
+            );
+
+            -webkit-background-clip:text;
+
+            -webkit-text-fill-color:transparent;
+        }
+
+        .hero-text p{
+
+            font-size:22px;
+
+            line-height:1.8;
+
+            color:#d1d5db;
+
+            max-width:700px;
+        }
+
+        .stats{
+
             display:flex;
+
+            gap:25px;
+
+            margin-top:60px;
+        }
+
+        .card{
+
+            background:
+            rgba(255,255,255,0.08);
+
+            padding:30px;
+
+            border-radius:24px;
+
+            width:200px;
+
+            backdrop-filter:blur(10px);
+        }
+
+        .card h3{
+
+            font-size:48px;
+
+            margin-bottom:15px;
+        }
+
+        .card p{
+
+            color:#cbd5e1;
+
+            line-height:1.5;
+        }
+
+        /* RIGHT SIDE */
+
+        .right{
+
+            padding:70px;
+
+            background:#f8fafc;
+        }
+
+        .right h2{
+
+            font-size:64px;
+
+            color:#020617;
+
+            margin-bottom:20px;
+        }
+
+        .subtitle{
+
+            color:#64748b;
+
+            font-size:22px;
+
+            line-height:1.7;
+
+            margin-bottom:40px;
+        }
+
+        form{
+
+            display:flex;
+
             flex-direction:column;
+
             gap:25px;
         }
 
         .row{
+
             display:grid;
+
             grid-template-columns:1fr 1fr;
-            gap:20px;
+
+            gap:25px;
         }
 
         label{
+
             display:block;
-            margin-bottom:10px;
-            font-weight:600;
+
+            margin-bottom:12px;
+
+            font-size:22px;
+
+            font-weight:700;
+
             color:#111827;
         }
 
-        input,select{
+        input,
+        select{
+
             width:100%;
-            padding:20px;
+
+            padding:22px;
+
             border:none;
-            border-radius:18px;
-            background:#f3f4f6;
-            font-size:18px;
+
+            border-radius:22px;
+
+            background:#e5e7eb;
+
+            font-size:20px;
+
+            outline:none;
         }
 
         button{
+
             margin-top:20px;
-            padding:22px;
+
+            padding:24px;
+
             border:none;
-            border-radius:18px;
-            background:linear-gradient(90deg,#2563eb,#7c3aed);
+
+            border-radius:24px;
+
+            background:
+            linear-gradient(
+                90deg,
+                #2563eb,
+                #7c3aed
+            );
+
             color:white;
-            font-size:22px;
+
+            font-size:28px;
+
             font-weight:bold;
+
             cursor:pointer;
+
             transition:0.3s;
+
+            box-shadow:
+            0 15px 35px rgba(124,58,237,0.4);
         }
 
         button:hover{
-            transform:translateY(-3px);
+
+            transform:translateY(-4px);
         }
 
         .prediction-box{
-            margin-top:30px;
-            background:#111827;
+
+            margin-top:35px;
+
+            background:#0f172a;
+
             color:white;
-            padding:25px;
-            border-radius:20px;
-            font-size:28px;
+
+            padding:28px;
+
+            border-radius:24px;
+
             text-align:center;
+
+            font-size:30px;
+
             font-weight:bold;
+
+            box-shadow:
+            0 15px 40px rgba(0,0,0,0.25);
         }
 
-        @media(max-width:1000px){
+        @media(max-width:1100px){
 
             .container{
                 grid-template-columns:1fr;
             }
 
-            .left h1{
-                font-size:50px;
+            .hero-text h1{
+                font-size:58px;
             }
 
             .row{
                 grid-template-columns:1fr;
+            }
+
+            .stats{
+                flex-direction:column;
             }
         }
 
     </style>
 
 </head>
+
 <body>
 
     <div class="container">
 
+        <!-- LEFT SIDE -->
+
         <div class="left">
 
-            <div class="logo">
-                N
+            <div class="brand">
+
+                <div class="logo">
+                    N
+                </div>
+
+                <div class="brand-text">
+
+                    <h2>NeuroEstate AI</h2>
+
+                    <p>
+                        Advanced Real Estate Intelligence
+                    </p>
+
+                </div>
+
             </div>
 
-            <h1>
-                PROPERTY <br>
-                VALUATION <br>
-                STARTS HERE
-            </h1>
+            <div class="hero-text">
 
-            <p>
-                Transforming real estate intelligence with AI-driven
-                property valuation. Predict home prices faster,
-                smarter, and more accurately using next-generation
-                machine learning technology.
-            </p>
+                <h1>
+                    FUTURE OF <br>
+
+                    <span>PROPERTY</span> <br>
+
+                    VALUATION <br>
+
+                    STARTS HERE
+                </h1>
+
+                <p>
+                    Transforming real estate intelligence with
+                    AI-driven property valuation. Predict home
+                    prices faster, smarter, and more accurately
+                    using next-generation machine learning technology.
+                </p>
+
+            </div>
+
+            <div class="stats">
+
+                <div class="card">
+
+                    <h3>98%</h3>
+
+                    <p>Prediction Accuracy</p>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>24/7</h3>
+
+                    <p>AI Property Insights</p>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>ML</h3>
+
+                    <p>Machine Learning Powered</p>
+
+                </div>
+
+            </div>
 
         </div>
 
+        <!-- RIGHT SIDE -->
+
         <div class="right">
 
-            <h2>NeuroEstate AI</h2>
+            <h2>Predict Price</h2>
 
             <p class="subtitle">
-                Enter the property details below and let AI estimate
-                the market value instantly.
+
+                Enter the property details below and let
+                NeuroEstate AI estimate the market value instantly.
+
             </p>
 
             <form method="POST">
@@ -197,27 +462,29 @@
                 <div class="row">
 
                     <div>
+
                         <label>Square Feet</label>
 
                         <input
                             type="number"
                             name="sqft"
-                            placeholder="Enter square feet"
                             required
                             value="{{ request.form.get('sqft','') }}"
                         >
+
                     </div>
 
                     <div>
+
                         <label>Bedrooms</label>
 
                         <input
                             type="number"
                             name="bedrooms"
-                            placeholder="Enter bedrooms"
                             required
                             value="{{ request.form.get('bedrooms','') }}"
                         >
+
                     </div>
 
                 </div>
@@ -225,46 +492,103 @@
                 <div class="row">
 
                     <div>
+
                         <label>Bathrooms</label>
 
                         <input
                             type="number"
                             name="bathrooms"
-                            placeholder="Enter bathrooms"
                             required
                             value="{{ request.form.get('bathrooms','') }}"
                         >
+
                     </div>
 
                     <div>
+
                         <label>Brick House</label>
 
                         <select name="brick">
 
                             <option value="Yes">Yes</option>
+
                             <option value="No">No</option>
 
                         </select>
+
                     </div>
 
                 </div>
 
-                <div>
+                <div class="row">
 
-                    <label>Neighbourhood</label>
+                    <div>
 
-                    <select name="neighbourhood">
+                        <label>Neighbourhood</label>
 
-                        <option value="East">East</option>
-                        <option value="North">North</option>
-                        <option value="West">West</option>
+                        <select name="neighbourhood">
 
-                    </select>
+                            <option value="East">East</option>
+
+                            <option value="North">North</option>
+
+                            <option value="West">West</option>
+
+                        </select>
+
+                    </div>
+
+                    <div>
+
+                        <label>Currency</label>
+
+                        <select name="currency">
+
+    <option value="USD"
+    {% if request.form.get('currency') == 'USD' %}
+    selected
+    {% endif %}>
+        US Dollar ($)
+    </option>
+
+    <option value="INR"
+    {% if request.form.get('currency') == 'INR' %}
+    selected
+    {% endif %}>
+        Indian Rupee (₹)
+    </option>
+
+    <option value="EUR"
+    {% if request.form.get('currency') == 'EUR' %}
+    selected
+    {% endif %}>
+        Euro (€)
+    </option>
+
+    <option value="GBP"
+    {% if request.form.get('currency') == 'GBP' %}
+    selected
+    {% endif %}>
+        British Pound (£)
+    </option>
+
+    <option value="JPY"
+    {% if request.form.get('currency') == 'JPY' %}
+    selected
+    {% endif %}>
+        Japanese Yen (¥)
+    </option>
+
+</select>
+
+                    </div>
 
                 </div>
 
                 <button type="submit">
-                    🚀 Predict Property Price
+
+                     Predict Property Price
+
                 </button>
 
             </form>
@@ -284,4 +608,5 @@
     </div>
 
 </body>
+
 </html>
