@@ -1,41 +1,58 @@
 from flask import Flask, render_template, request
 import pandas as pd
 import joblib
+import os
 
 app = Flask(__name__)
 
 # Load model
-model = joblib.load("models/house_price_model.pkl")
+model_path = os.path.join("models", "house_price_model.pkl")
+model = joblib.load(model_path)
 
-@app.route("/", methods=["GET", "POST"])
+
+@app.route('/')
 def home():
+    return render_template('index.html')
 
-    prediction = None
 
-    if request.method == "POST":
+@app.route('/predict', methods=['POST'])
+def predict():
 
-        sqft = int(request.form["sqft"])
-        bedrooms = int(request.form["bedrooms"])
-        bathrooms = int(request.form["bathrooms"])
-        brick = request.form["brick"]
-        neighbourhood = request.form["neighbourhood"]
+    try:
+        sqft = float(request.form['sqft'])
+        bedrooms = int(request.form['bedrooms'])
+        bathrooms = int(request.form['bathrooms'])
+        brick = request.form['brick']
+        neighbourhood = request.form['neighbourhood']
 
+        # Create TotalRooms
         total_rooms = bedrooms + bathrooms
 
+        # Input dataframe
         input_data = pd.DataFrame({
-            "SqFt": [sqft],
-            "Bedrooms": [bedrooms],
-            "Bathrooms": [bathrooms],
-            "Brick": [brick],
-            "Neighbourhood": [neighbourhood],
-            "TotalRooms": [total_rooms]
+            'SqFt': [sqft],
+            'Bedrooms': [bedrooms],
+            'Bathrooms': [bathrooms],
+            'Brick': [brick],
+            'Neighbourhood': [neighbourhood],
+            'TotalRooms': [total_rooms]
         })
 
-        prediction = round(model.predict(input_data)[0], 2)
+        # Predict
+        prediction = model.predict(input_data)[0]
 
-        print(prediction)
+        prediction = round(prediction, 2)
 
-    return render_template("index.html", prediction=prediction)
+        return render_template(
+            'index.html',
+            prediction_text=f"Estimated Price: ${prediction}"
+        )
+
+    except Exception as e:
+        return render_template(
+            'index.html',
+            prediction_text=f"Error: {str(e)}"
+        )
 
 
 if __name__ == "__main__":
