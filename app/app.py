@@ -1,65 +1,36 @@
-from flask import Flask, request, jsonify, render_template
-import pandas as pd
+from flask import Flask, render_template, request
 import joblib
+import pandas as pd
 
 app = Flask(__name__)
 
-# LOAD MODEL
-model = joblib.load("../models/house_price_model.pkl")
+model = joblib.load("models/house_price_model.pkl")
 
-
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def home():
+    prediction = None
 
-    return render_template("index.html")
-
-
-@app.route("/predict", methods=["POST"])
-def predict():
-
-    try:
-
-        data = request.get_json()
-
-        bedrooms = int(data["Bedrooms"])
-
-        bathrooms = int(data["Bathrooms"])
+    if request.method == "POST":
+        sqft = int(request.form["sqft"])
+        bedrooms = int(request.form["bedrooms"])
+        bathrooms = int(request.form["bathrooms"])
+        brick = request.form["brick"]
+        neighbourhood = request.form["neighbourhood"]
 
         total_rooms = bedrooms + bathrooms
 
         input_data = pd.DataFrame({
-
-            "SqFt": [int(data["SqFt"])],
-
+            "SqFt": [sqft],
             "Bedrooms": [bedrooms],
-
             "Bathrooms": [bathrooms],
-
-            "Brick": [data["Brick"]],
-
-            "Neighbourhood": [data["Neighbourhood"]],
-
+            "Brick": [brick],
+            "Neighbourhood": [neighbourhood],
             "TotalRooms": [total_rooms]
-
         })
 
-        prediction = model.predict(input_data)
+        prediction = model.predict(input_data)[0]
 
-        return jsonify({
-
-            "Predicted_Price": float(prediction[0])
-
-        })
-
-    except Exception as e:
-
-        return jsonify({
-
-            "error": str(e)
-
-        })
-
+    return render_template("index.html", prediction=prediction)
 
 if __name__ == "__main__":
-
     app.run(debug=True)
