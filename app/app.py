@@ -4,27 +4,27 @@ import joblib
 
 app = Flask(__name__)
 
-# Load model
+# Load trained model
 model = joblib.load("models/house_price_model.pkl")
 
 
 @app.route("/", methods=["GET", "POST"])
 def home():
 
-    prediction_text = ""
+    prediction_text = None
 
     if request.method == "POST":
-        try:
-            sqft = float(request.form["sqft"])
-            bedrooms = int(request.form["bedrooms"])
-            bathrooms = int(request.form["bathrooms"])
-            brick = request.form["brick"]
-            neighbourhood = request.form["neighbourhood"]
 
-            # Create TotalRooms
+        try:
+
+            sqft = float(request.form.get("sqft"))
+            bedrooms = int(request.form.get("bedrooms"))
+            bathrooms = int(request.form.get("bathrooms"))
+            brick = request.form.get("brick")
+            neighbourhood = request.form.get("neighbourhood")
+
             total_rooms = bedrooms + bathrooms
 
-            # Create dataframe
             input_data = pd.DataFrame({
                 "SqFt": [sqft],
                 "Bedrooms": [bedrooms],
@@ -34,13 +34,13 @@ def home():
                 "TotalRooms": [total_rooms]
             })
 
-            # Predict
-            prediction = model.predict(input_data)[0]
+            prediction = model.predict(input_data)
 
-            prediction_text = f"Estimated Price: ${round(prediction, 2)}"
+            prediction_text = f"Estimated Price: ${round(prediction[0], 2)}"
 
         except Exception as e:
-            prediction_text = f"Error: {str(e)}"
+
+            prediction_text = f"Error: {e}"
 
     return render_template(
         "index.html",
