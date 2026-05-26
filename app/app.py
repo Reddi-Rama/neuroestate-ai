@@ -1,16 +1,19 @@
 from flask import Flask, render_template, request
-import joblib
 import pandas as pd
+import joblib
 
 app = Flask(__name__)
 
+# Load model
 model = joblib.load("models/house_price_model.pkl")
 
 @app.route("/", methods=["GET", "POST"])
 def home():
+
     prediction = None
 
     if request.method == "POST":
+
         sqft = int(request.form["sqft"])
         bedrooms = int(request.form["bedrooms"])
         bathrooms = int(request.form["bathrooms"])
@@ -28,9 +31,12 @@ def home():
             "TotalRooms": [total_rooms]
         })
 
-        prediction = model.predict(input_data)[0]
+        prediction = round(model.predict(input_data)[0], 2)
+
+        print(prediction)
 
     return render_template("index.html", prediction=prediction)
+
 
 if __name__ == "__main__":
     app.run(debug=True)

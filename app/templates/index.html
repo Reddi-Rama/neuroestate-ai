@@ -1,18 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>NeuroEstate AI</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
 
@@ -20,396 +13,188 @@
             margin:0;
             padding:0;
             box-sizing:border-box;
-            font-family:'Outfit',sans-serif;
+            font-family:'Poppins',sans-serif;
         }
 
         body{
-
             min-height:100vh;
-
-            overflow-x:hidden;
-
             background:
-            radial-gradient(circle at top left,#2563eb 0%,transparent 30%),
-            radial-gradient(circle at bottom right,#7c3aed 0%,transparent 30%),
-            #020617;
-
+            linear-gradient(135deg,#020617,#0f172a,#581c87);
+            display:flex;
+            justify-content:center;
+            align-items:center;
             padding:40px;
+            overflow:auto;
         }
 
         .container{
-
             width:100%;
-
             max-width:1500px;
-
-            margin:auto;
-
-            min-height:90vh;
-
-            border-radius:35px;
-
-            overflow:hidden;
-
             display:grid;
-
-            grid-template-columns:1.1fr 0.9fr;
-
+            grid-template-columns:1fr 1fr;
+            border-radius:40px;
+            overflow:hidden;
             background:rgba(255,255,255,0.05);
-
-            border:1px solid rgba(255,255,255,0.08);
-
-            backdrop-filter:blur(30px);
-
-            box-shadow:
-            0 20px 80px rgba(0,0,0,0.5);
+            backdrop-filter:blur(20px);
+            box-shadow:0 20px 60px rgba(0,0,0,0.5);
         }
 
         .left{
-
             padding:70px;
-
             background:
-            linear-gradient(
-                145deg,
-                rgba(37,99,235,0.15),
-                rgba(15,23,42,0.8)
-            );
-
+            linear-gradient(135deg,#0f172a,#020617,#1e3a8a);
             color:white;
+            position:relative;
         }
 
         .logo{
-
             width:90px;
             height:90px;
-
-            border-radius:28px;
-
-            background:
-            linear-gradient(
-                135deg,
-                #60a5fa,
-                #7c3aed
-            );
-
+            border-radius:25px;
+            background:linear-gradient(135deg,#2563eb,#7c3aed);
             display:flex;
-
-            justify-content:center;
-
             align-items:center;
-
-            font-size:38px;
-
-            font-weight:900;
-
-            margin-bottom:40px;
-
-            box-shadow:
-            0 15px 35px rgba(37,99,235,0.35);
+            justify-content:center;
+            font-size:40px;
+            margin-bottom:30px;
+            box-shadow:0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .hero-title{
-
-            font-size:78px;
-
-            line-height:0.95;
-
-            font-weight:900;
-
-            letter-spacing:-4px;
-
+        .title{
+            font-size:80px;
+            font-weight:800;
+            line-height:1;
+            margin-bottom:30px;
             text-transform:uppercase;
-
-            animation:floatText 4s ease-in-out infinite;
-
-            text-shadow:
-            0 1px 0 #ccc,
-            0 2px 0 #c9c9c9,
-            0 3px 0 #bbb,
-            0 4px 0 #b9b9b9,
-            0 5px 0 #aaa,
-            0 10px 20px rgba(0,0,0,0.4),
-            0 20px 40px rgba(0,0,0,0.35);
+            text-shadow:0 10px 20px rgba(0,0,0,0.4);
         }
 
         .gradient{
-
-            background:
-            linear-gradient(
-                90deg,
-                #60a5fa,
-                #7c3aed,
-                #c084fc
-            );
-
+            background:linear-gradient(to right,#60a5fa,#a855f7);
             -webkit-background-clip:text;
-
             -webkit-text-fill-color:transparent;
         }
 
-        .description{
-
-            margin-top:35px;
-
-            max-width:650px;
-
-            font-size:18px;
-
-            line-height:1.9;
-
+        .desc{
+            font-size:22px;
+            line-height:1.8;
             color:#cbd5e1;
+            margin-bottom:50px;
         }
 
         .stats{
-
-            margin-top:50px;
-
             display:flex;
-
-            gap:24px;
-
+            gap:20px;
             flex-wrap:wrap;
         }
 
         .card{
-
-            width:180px;
-
-            padding:28px;
-
-            border-radius:30px;
-
-            background:rgba(255,255,255,0.06);
-
-            border:1px solid rgba(255,255,255,0.08);
-
-            backdrop-filter:blur(20px);
-
-            transition:0.4s;
+            flex:1;
+            min-width:180px;
+            background:rgba(255,255,255,0.08);
+            border:1px solid rgba(255,255,255,0.1);
+            padding:30px;
+            border-radius:25px;
+            backdrop-filter:blur(10px);
         }
 
-        .card:hover{
-
-            transform:translateY(-8px);
-
-            background:rgba(255,255,255,0.09);
-
-            box-shadow:0 20px 40px rgba(0,0,0,0.25);
-        }
-
-        .card h2{
-
-            font-size:42px;
-
+        .card h1{
+            font-size:45px;
             margin-bottom:10px;
         }
 
-        .card span{
-
+        .card p{
             color:#cbd5e1;
         }
 
         .right{
-
-            padding:60px;
-
-            background:white;
+            background:#f8fafc;
+            padding:70px;
         }
 
         .tag{
-
-            width:max-content;
-
-            padding:10px 18px;
-
-            border-radius:100px;
-
+            display:inline-block;
+            padding:10px 20px;
+            border-radius:30px;
             background:#dbeafe;
-
             color:#2563eb;
-
-            font-size:14px;
-
-            font-weight:700;
-
-            margin-bottom:24px;
+            font-weight:600;
+            margin-bottom:20px;
         }
 
-        .form-title{
-
-            font-size:56px;
-
-            font-weight:900;
-
+        .right h1{
+            font-size:60px;
+            margin-bottom:20px;
             color:#020617;
         }
 
-        .form-description{
-
-            margin-top:18px;
-
+        .right p{
             color:#64748b;
+            font-size:20px;
+            line-height:1.7;
+            margin-bottom:40px;
+        }
 
-            font-size:17px;
-
-            line-height:1.8;
+        form{
+            display:flex;
+            flex-direction:column;
+            gap:25px;
         }
 
         .grid{
-
-            margin-top:40px;
-
             display:grid;
-
             grid-template-columns:1fr 1fr;
-
-            gap:24px;
+            gap:20px;
         }
 
-        .group{
-
+        .input-box{
             display:flex;
-
             flex-direction:column;
         }
 
-        .group label{
-
+        label{
             margin-bottom:10px;
-
-            font-weight:700;
-
+            font-weight:600;
             color:#0f172a;
         }
 
-        .group input,
-        .group select{
-
-            height:68px;
-
+        input,select{
+            padding:22px;
             border:none;
-
             outline:none;
-
-            border-radius:22px;
-
-            background:#f1f5f9;
-
-            padding:0 22px;
-
-            font-size:16px;
-
-            border:2px solid transparent;
-
-            transition:0.3s;
-        }
-
-        .group input:focus,
-        .group select:focus{
-
-            border-color:#2563eb;
-
-            background:white;
-
-            box-shadow:
-            0 10px 30px rgba(37,99,235,0.15);
+            border-radius:20px;
+            background:#e2e8f0;
+            font-size:18px;
         }
 
         .predict-btn{
-
-            margin-top:35px;
-
-            width:100%;
-
-            height:74px;
-
+            margin-top:20px;
+            padding:24px;
             border:none;
-
-            border-radius:24px;
-
-            background:
-            linear-gradient(
-                90deg,
-                #2563eb,
-                #7c3aed
-            );
-
+            border-radius:25px;
+            font-size:22px;
+            font-weight:700;
             color:white;
-
-            font-size:20px;
-
-            font-weight:800;
-
             cursor:pointer;
-
-            transition:0.4s;
+            background:linear-gradient(135deg,#2563eb,#7c3aed);
+            transition:0.3s;
+            box-shadow:0 15px 40px rgba(124,58,237,0.3);
         }
 
         .predict-btn:hover{
-
-            transform:translateY(-5px);
-
-            box-shadow:
-            0 20px 40px rgba(37,99,235,0.35);
+            transform:translateY(-5px) scale(1.02);
         }
 
-        .result{
-
-            margin-top:35px;
-
-            padding:35px;
-
-            border-radius:30px;
-
-            background:
-            linear-gradient(
-                145deg,
-                #eff6ff,
-                #eef2ff
-            );
-
-            display:none;
-        }
-
-        .result h3{
-
-            color:#1e40af;
-
-            margin-bottom:15px;
-        }
-
-        .price{
-
-            font-size:58px;
-
-            font-weight:900;
-
-            background:
-            linear-gradient(
-                90deg,
-                #2563eb,
-                #7c3aed
-            );
-
-            -webkit-background-clip:text;
-
-            -webkit-text-fill-color:transparent;
-        }
-
-        @keyframes floatText{
-
-            0%{
-                transform:translateY(0px);
-            }
-
-            50%{
-                transform:translateY(-10px);
-            }
-
-            100%{
-                transform:translateY(0px);
-            }
+        .result-box{
+            margin-top:25px;
+            padding:25px;
+            border-radius:25px;
+            background:linear-gradient(135deg,#2563eb,#7c3aed);
+            color:white;
+            text-align:center;
+            font-size:32px;
+            font-weight:700;
+            box-shadow:0 15px 40px rgba(0,0,0,0.2);
         }
 
         @media(max-width:1200px){
@@ -418,32 +203,18 @@
                 grid-template-columns:1fr;
             }
 
-            .left{
-                display:none;
-            }
-        }
-
-        @media(max-width:700px){
-
-            body{
-                padding:15px;
+            .title{
+                font-size:60px;
             }
 
-            .right{
-                padding:30px;
+            .right h1{
+                font-size:45px;
             }
 
             .grid{
                 grid-template-columns:1fr;
             }
 
-            .hero-title{
-                font-size:52px;
-            }
-
-            .form-title{
-                font-size:40px;
-            }
         }
 
     </style>
@@ -452,236 +223,128 @@
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <div class="left">
+    <div class="left">
 
-            <div class="logo">
-                N
-            </div>
-
-            <h1 class="hero-title">
-
-                The Future Of
-
-                <span class="gradient">
-                    Property Valuation
-                </span>
-
-                Starts Here
-
-            </h1>
-
-            <p class="description">
-
-                Transforming real estate intelligence with AI-driven
-                property valuation. Predict home prices faster, smarter,
-                and more accurately using next-generation machine learning technology.
-
-            </p>
-
-            <div class="stats">
-
-                <div class="card">
-
-                    <h2>98%</h2>
-
-                    <span>Prediction Accuracy</span>
-
-                </div>
-
-                <div class="card">
-
-                    <h2>24/7</h2>
-
-                    <span>AI Property Insights</span>
-
-                </div>
-
-                <div class="card">
-
-                    <h2>ML</h2>
-
-                    <span>Machine Learning Powered</span>
-
-                </div>
-
-            </div>
-
+        <div class="logo">
+            🏡
         </div>
 
-        <div class="right">
+        <h1 class="title">
+            Future Of <span class="gradient">Property</span><br>
+            Valuation<br>
+            Starts Here
+        </h1>
 
-            <div class="tag">
-                AI Powered Prediction
+        <p class="desc">
+            Transforming real estate intelligence with AI-driven property valuation.
+            Predict home prices faster, smarter, and more accurately using
+            next-generation machine learning technology.
+        </p>
+
+        <div class="stats">
+
+            <div class="card">
+                <h1>98%</h1>
+                <p>Prediction Accuracy</p>
             </div>
 
-            <h1 class="form-title">
-                Predict Property Price
-            </h1>
-
-            <p class="form-description">
-
-                Enter the property details below and let NeuroEstate AI
-                estimate the market value instantly.
-
-            </p>
-
-            <div class="grid">
-
-                <div class="group">
-
-                    <label>Square Feet</label>
-
-                    <input type="number"
-                        id="sqft"
-                        placeholder="Enter square feet">
-
-                </div>
-
-                <div class="group">
-
-                    <label>Bedrooms</label>
-
-                    <input type="number"
-                        id="bedrooms"
-                        placeholder="Enter bedrooms">
-
-                </div>
-
-                <div class="group">
-
-                    <label>Bathrooms</label>
-
-                    <input type="number"
-                        id="bathrooms"
-                        placeholder="Enter bathrooms">
-
-                </div>
-
-                <div class="group">
-
-                    <label>Brick House</label>
-
-                    <select id="brick">
-
-                        <option value="Yes">Yes</option>
-
-                        <option value="No">No</option>
-
-                    </select>
-
-                </div>
-
-                <div class="group">
-
-                    <label>Neighbourhood</label>
-
-                    <select id="neighbourhood">
-
-                        <option value="East">East</option>
-
-                        <option value="North">North</option>
-
-                        <option value="West">West</option>
-
-                    </select>
-
-                </div>
-
+            <div class="card">
+                <h1>24/7</h1>
+                <p>AI Property Insights</p>
             </div>
 
-            <button class="predict-btn"
-                onclick="predictPrice()">
-
-                🚀 Predict Property Price
-
-            </button>
-            {% if prediction %}
-<div style="
-    margin-top: 25px;
-    padding: 20px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #2563eb, #7c3aed);
-    color: white;
-    text-align: center;
-    font-size: 28px;
-    font-weight: bold;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-">
-    Predicted Price: ${{ prediction }}
-</div>
-{% endif %}
-
-            <div class="result"
-                id="result">
-
-                <h3>
-                    Estimated Market Value
-                </h3>
-
-                <div class="price"
-                    id="price"></div>
-
+            <div class="card">
+                <h1>ML</h1>
+                <p>Machine Learning Powered</p>
             </div>
 
         </div>
 
     </div>
 
-    <script>
+    <div class="right">
 
-        async function predictPrice(){
+        <div class="tag">
+            AI Powered Prediction
+        </div>
 
-            const bedrooms =
-                parseInt(document.getElementById("bedrooms").value)
+        <h1>Predict Price</h1>
 
-            const bathrooms =
-                parseInt(document.getElementById("bathrooms").value)
+        <p>
+            Enter the property details below and let NeuroEstate AI estimate
+            the market value instantly.
+        </p>
 
-            const totalRooms = bedrooms + bathrooms
+        <form method="POST">
 
-            const data = {
+            <div class="grid">
 
-                SqFt: parseInt(
-                    document.getElementById("sqft").value
-                ),
+                <div class="input-box">
+                    <label>Square Feet</label>
+                    <input type="number" name="sqft" required>
+                </div>
 
-                Bedrooms: bedrooms,
+                <div class="input-box">
+                    <label>Bedrooms</label>
+                    <input type="number" name="bedrooms" required>
+                </div>
 
-                Bathrooms: bathrooms,
+            </div>
 
-                Brick: document.getElementById("brick").value,
+            <div class="grid">
 
-                Neighbourhood:
-                document.getElementById("neighbourhood").value,
+                <div class="input-box">
+                    <label>Bathrooms</label>
+                    <input type="number" name="bathrooms" required>
+                </div>
 
-                TotalRooms: totalRooms
-            }
+                <div class="input-box">
+                    <label>Brick House</label>
 
-            const response = await fetch("/predict",{
+                    <select name="brick">
 
-                method:"POST",
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
 
-                headers:{
-                    "Content-Type":"application/json"
-                },
+                    </select>
 
-                body:JSON.stringify(data)
-            })
+                </div>
 
-            const result = await response.json()
+            </div>
 
-            document.getElementById("result").style.display="block"
+            <div class="input-box">
 
-            document.getElementById("price").innerHTML =
+                <label>Neighbourhood</label>
 
-                "$ " +
-                result.Predicted_Price.toFixed(2)
-        }
+                <select name="neighbourhood">
 
-    </script>
+                    <option value="East">East</option>
+                    <option value="North">North</option>
+                    <option value="West">West</option>
+
+                </select>
+
+            </div>
+
+            <button type="submit" class="predict-btn">
+                🚀 Predict Property Price
+            </button>
+
+            {% if prediction %}
+
+            <div class="result-box">
+                Predicted Price: ${{ prediction }}
+            </div>
+
+            {% endif %}
+
+        </form>
+
+    </div>
+
+</div>
 
 </body>
-
 </html>
